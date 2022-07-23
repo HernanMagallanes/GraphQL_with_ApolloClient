@@ -6,6 +6,7 @@ import { Persons } from "./Persons";
 import { PersonForm } from "./PersonForm";
 import { usePersons } from "./persons/custom-hooks";
 import { Notify } from "./Notify";
+import { PhoneForm } from "./PhoneForm";
 
 function App() {
 	const { data, loading, error } = usePersons();
@@ -33,6 +34,7 @@ function App() {
 					<Persons persons={data?.allPersons}></Persons>
 				)}
 				<PersonForm notifyError={notifyError} />
+				<PhoneForm notifyError={notifyError} />
 			</header>
 		</div>
 	);
