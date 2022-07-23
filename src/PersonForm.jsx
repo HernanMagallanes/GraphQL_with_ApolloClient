@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ALL_PERSONS } from "./persons/graphql-queries";
 import { CREATE_PERSON } from "./persons/graphql-mutations";
 
-export const PersonForm = () => {
+export const PersonForm = ({ notifyError }) => {
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [street, setStreet] = useState("");
@@ -12,6 +12,9 @@ export const PersonForm = () => {
 
 	const [createPerson] = useMutation(CREATE_PERSON, {
 		refetchQueries: [{ query: ALL_PERSONS }],
+		onError: (error) => {
+			notifyError(error.graphQLErrors[0].message);
+		},
 	});
 
 	const handleSubmit = (e) => {
