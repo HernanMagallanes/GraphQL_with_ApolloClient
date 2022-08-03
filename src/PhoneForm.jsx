@@ -26,8 +26,13 @@ export const PhoneForm = ({ notifyError }) => {
 	};
 
 	return (
-		<div>
-			<h2>Edit phone number</h2>
+		<div
+			style={{
+				width: "50vw",
+				height: "20vh",
+			}}
+		>
+			<h3>Edit phone number</h3>
 			<form onSubmit={handleSubmit}>
 				<input
 					placeholder="Name"

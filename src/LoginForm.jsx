@@ -27,25 +27,34 @@ const LoginForm = ({ notifyError, setToken }) => {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<div>
-					username
-					<input
-						value={username}
-						onChange={({ target }) => setUsername(target.value)}
-					/>
-				</div>
-				<div>
-					password
-					<input
-						type="password"
-						value={password}
-						onChange={({ target }) => setPassword(target.value)}
-					/>
-				</div>
-				<button type="submit">Login</button>
-			</form>
+		<div
+			style={{
+				width: "50vw",
+				height: "20vh",
+			}}
+		>
+			<h3>User login</h3>
+
+			<div>
+				<form onSubmit={handleSubmit}>
+					<div>
+						<input
+							placeholder="username"
+							value={username}
+							onChange={({ target }) => setUsername(target.value)}
+						/>
+					</div>
+					<div>
+						<input
+							placeholder="password"
+							type="password"
+							value={password}
+							onChange={({ target }) => setPassword(target.value)}
+						/>
+					</div>
+					<button type="submit">Login</button>
+				</form>
+			</div>
 		</div>
 	);
 };

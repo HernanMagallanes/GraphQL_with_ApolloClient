@@ -12,8 +12,7 @@ import {
 
 const getAuth = () => {
 	const token = localStorage.getItem("phonenumbers-user-token");
-
-	return token ? `bearer ${token}` : null;
+	return token ? `Bearer ${token}` : " ";
 };
 
 const client = new ApolloClient({

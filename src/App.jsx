@@ -8,7 +8,6 @@ import { usePersons } from "./persons/custom-hooks";
 import { Notify } from "./Notify";
 import { PhoneForm } from "./PhoneForm";
 import LoginForm from "./LoginForm";
-// import { ALL_PERSONS } from "./persons/graphql-queries";
 
 import { useApolloClient } from "@apollo/client/react";
 
@@ -29,7 +28,7 @@ function App() {
 	};
 
 	const logout = () => {
-		setToken(null);
+		// setToken(null);
 		localStorage.clear();
 		client.clearStore();
 	};
@@ -55,7 +54,9 @@ function App() {
 					<LoginForm notifyError={notifyError} setToken={setToken} />
 				)}
 
+				<br />
 				<PersonForm notifyError={notifyError} />
+				<br />
 				<PhoneForm notifyError={notifyError} />
 			</header>
 		</div>

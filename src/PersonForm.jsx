@@ -11,9 +11,22 @@ export const PersonForm = ({ notifyError }) => {
 	const [city, setCity] = useState("");
 
 	const [createPerson] = useMutation(CREATE_PERSON, {
-		refetchQueries: [{ query: ALL_PERSONS }],
+		// refetchQueries: [{ query: ALL_PERSONS }],
 		onError: (error) => {
 			notifyError(error.graphQLErrors[0].message);
+		},
+		update: (store, response) => {
+			const dataInStore = store.readQuery({ query: ALL_PERSONS });
+			store.writeQuery({
+				query: ALL_PERSONS,
+				data: {
+					...dataInStore,
+					allPersons: [
+						...dataInStore.allPersons,
+						response.data.addPerson,
+					],
+				},
+			});
 		},
 	});
 
@@ -29,8 +42,13 @@ export const PersonForm = ({ notifyError }) => {
 	};
 
 	return (
-		<div>
-			<h2>Create new person</h2>
+		<div
+			style={{
+				width: "50vw",
+				height: "20vh",
+			}}
+		>
+			<h3>Add new person</h3>
 			<form onSubmit={handleSubmit}>
 				<input
 					placeholder="Name"

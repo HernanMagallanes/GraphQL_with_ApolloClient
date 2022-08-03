@@ -19,8 +19,6 @@ export const Persons = ({ persons }) => {
 	const [getPerson, result] = useLazyQuery(FIND_PERSON);
 	const [person, setPerson] = useState(null);
 
-	console.log({ person });
-
 	const showPerson = (name) => {
 		getPerson({ variables: { nameToSearch: name } });
 	};
